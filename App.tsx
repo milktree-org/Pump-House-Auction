@@ -1,15 +1,15 @@
 
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import DiscoverSection from './components/DiscoverSection';
-import ServicesSection from './components/ServicesSection';
-import AuctionCalendar from './components/AuctionCalendar';
-import TestimonialsSection from './components/TestimonialsSection';
-import ContactSection from './components/ContactSection';
-import NewsletterSection from './components/NewsletterSection';
-import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import DiscoverSection from './components/DiscoverSection.tsx';
+import ServicesSection from './components/ServicesSection.tsx';
+import AuctionCalendar from './components/AuctionCalendar.tsx';
+import TestimonialsSection from './components/TestimonialsSection.tsx';
+import ContactSection from './components/ContactSection.tsx';
+import NewsletterSection from './components/NewsletterSection.tsx';
+import Footer from './components/Footer.tsx';
+import ChatWidget from './components/ChatWidget.tsx';
 
 const App: React.FC = () => {
   return (
