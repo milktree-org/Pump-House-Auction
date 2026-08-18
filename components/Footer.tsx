@@ -1,117 +1,157 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { CONTACT, HOURS, IMAGES, PLATFORMS, SOCIAL } from '../constants/site.ts';
+import AppLink from './AppLink.tsx';
 
+interface FooterLink {
+  name: string;
+  href: string;
+  external?: boolean;
+}
+
+// Internal hrefs stay as '#' until the router and inner pages land.
 const Footer: React.FC = () => {
-  const departments = [
-    "General Auctions", "Fine Art", "Jewellery & Watches", "Silver & Gold", "Collectables", "Modern Art"
-  ];
-  
-  const services = [
-    "Free Valuations", "House Clearance", "Probate & Tax", "Insurance Valuation", "Collection Service", "Online Bidding"
-  ];
-  
-  const company = [
-    "Our Story", "The Team", "Latest News", "Bidding Guide", "Selling Guide", "FAQs"
+  const auctions: FooterLink[] = [
+    { name: 'Home', href: '/' },
+    { name: 'Calendar', href: '/calendar' },
+    { name: 'Catalogue', href: '/catalogue' },
+    { name: 'Bid Live', href: PLATFORMS.bidLive, external: true },
+    { name: 'Results', href: '/gallery' },
   ];
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "Calendar", href: "#" },
-    { name: "Catalogue", href: "#" },
-    { name: "Bid Live", href: "#" },
-    { name: "Contact", href: "#" }
+  const services: FooterLink[] = [
+    { name: 'Buy', href: '/buy' },
+    { name: 'Sell', href: '/sell' },
+    { name: 'House Clearance', href: '/house-clearance' },
+    { name: 'Probate', href: '/probate' },
+    { name: 'Free Valuation', href: '/free-valuation' },
   ];
+
+  const company: FooterLink[] = [
+    { name: 'About Us', href: '/our-story' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Terms & Conditions', href: '/terms-conditions' },
+  ];
+
+  const socials: FooterLink[] = [
+    { name: 'Instagram', href: SOCIAL.instagram, external: true },
+    { name: 'Facebook', href: SOCIAL.facebook, external: true },
+  ];
+
+  const renderLink = (item: FooterLink) => (
+    <li key={item.name}>
+      <AppLink
+        href={item.href}
+        external={item.external}
+        className="text-[13px] text-gray-400 hover:text-white transition-colors font-light"
+      >
+        {item.name}
+      </AppLink>
+    </li>
+  );
 
   return (
-    <footer className="bg-pumphouse-charcoal text-white pt-32 pb-12 overflow-hidden border-t border-white/5">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-        
+    <footer className="relative bg-pumphouse-charcoal text-white pt-32 pb-12 overflow-hidden border-t border-white/5">
+      <div className="relative z-10 max-w-screen-2xl mx-auto px-6 md:px-12">
+
         {/* Top Tier: Brand & Newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 pb-24 border-b border-white/10">
           <div className="lg:col-span-5">
             <div className="mb-10">
-              <img 
-                src="https://pumphouseauctions.co.uk/wp-content/uploads/2021/11/pumph-2-300x300.png" 
-                alt="Pump House Specialist Auctions" 
+              <img
+                src={IMAGES.logoDark}
+                alt="Pump House Specialist Auctions"
                 className="w-48 h-auto object-contain mb-4"
               />
               <p className="text-[10px] uppercase tracking-[0.5em] text-pumphouse-gold font-bold">Specialist Auctions</p>
             </div>
             <p className="text-gray-400 text-lg font-light leading-relaxed max-w-md">
-              The South's premier auction house. Bringing extraordinary items to a global audience of passionate collectors since 1985.
+              The family-owned Pump House Specialist Auctions Ltd is a long established auction house in the heart of Hampshire. We ensure the highest levels of service to our clients.
             </p>
-            
-            {/* Social Icons */}
+
+            {/* Social */}
             <div className="mt-10 flex space-x-6">
-              {['Instagram', 'Facebook', 'LinkedIn', 'X'].map((social) => (
-                <a key={social} href="#" className="text-[10px] uppercase tracking-[0.2em] text-gray-500 hover:text-pumphouse-gold transition-colors duration-300">
-                  {social}
+              {socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] uppercase tracking-[0.2em] text-gray-500 hover:text-pumphouse-gold transition-colors duration-300"
+                >
+                  {social.name}
                 </a>
               ))}
             </div>
           </div>
 
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <h4 className="font-serif text-2xl mb-6">Receive auction alerts & newsletters</h4>
-            <form className="relative group max-w-xl">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="w-full bg-transparent border-b border-gray-700 py-4 text-sm focus:border-pumphouse-gold outline-none transition-all placeholder:text-gray-600 font-light"
+            <h4 className="font-serif text-2xl mb-3">Pump House Auction Alerts</h4>
+            <p className="text-gray-500 text-[13px] font-light mb-6 max-w-xl leading-relaxed">
+              Subscribe for auction alerts and our monthly newsletter — upcoming sales, valuation days and previews.
+            </p>
+            <form className="relative group max-w-xl" onSubmit={(e) => e.preventDefault()}>
+              <label htmlFor="footer-email" className="sr-only">Email address</label>
+              <input
+                id="footer-email"
+                type="email"
+                placeholder="Enter your email"
+                className="w-full bg-transparent border-b border-gray-700 py-4 pr-28 text-sm focus:border-pumphouse-gold outline-none transition-all placeholder:text-gray-600 font-light"
               />
-              <button className="absolute right-0 bottom-4 text-[11px] uppercase tracking-[0.3em] font-bold text-pumphouse-gold hover:text-white transition-colors">
+              <button
+                type="submit"
+                className="absolute right-0 bottom-4 text-[11px] uppercase tracking-[0.3em] font-bold text-pumphouse-gold hover:text-white transition-colors"
+              >
                 Subscribe
               </button>
             </form>
             <p className="mt-4 text-[10px] text-gray-600 uppercase tracking-widest leading-loose">
-              By subscribing, you agree to our <a href="#" className="underline hover:text-pumphouse-gold transition-colors">Privacy Policy</a>.
+              By subscribing, you agree to our <Link to="/privacy-policy" className="underline hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>.
             </p>
           </div>
         </div>
 
         {/* Middle Tier: Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12 py-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 py-24">
           <div>
             <h5 className="text-[10px] uppercase tracking-[0.4em] text-pumphouse-gold font-bold mb-8">Auctions</h5>
-            <ul className="space-y-4">
-              {quickLinks.map(item => (
-                <li key={item.name}><a href={item.href} className="text-[13px] text-gray-400 hover:text-white transition-colors font-light">{item.name}</a></li>
-              ))}
-            </ul>
+            <ul className="space-y-4">{auctions.map(renderLink)}</ul>
           </div>
           <div>
             <h5 className="text-[10px] uppercase tracking-[0.4em] text-pumphouse-gold font-bold mb-8">Services</h5>
-            <ul className="space-y-4">
-              {services.map(item => (
-                <li key={item}><a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors font-light">{item}</a></li>
-              ))}
-            </ul>
+            <ul className="space-y-4">{services.map(renderLink)}</ul>
           </div>
           <div>
-            <h5 className="text-[10px] uppercase tracking-[0.4em] text-pumphouse-gold font-bold mb-8">About Us</h5>
-            <ul className="space-y-4">
-              {company.map(item => (
-                <li key={item}><a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors font-light">{item}</a></li>
-              ))}
-            </ul>
+            <h5 className="text-[10px] uppercase tracking-[0.4em] text-pumphouse-gold font-bold mb-8">About</h5>
+            <ul className="space-y-4">{company.map(renderLink)}</ul>
           </div>
           <div>
             <h5 className="text-[10px] uppercase tracking-[0.4em] text-pumphouse-gold font-bold mb-8">Visit Us</h5>
             <div className="space-y-8">
               <div>
-                <p className="text-[13px] text-white font-medium mb-1">Southampton, UK</p>
+                <p className="text-[13px] text-white font-medium mb-1">{CONTACT.addressLines[0]}</p>
                 <p className="text-[12px] text-gray-500 font-light leading-relaxed">
-                  The Historic Pump House<br />
-                  Vicars Hill, Boldre<br />
-                  Hampshire, SO41 5QB
+                  {CONTACT.addressLines.slice(1).map((line) => (
+                    <React.Fragment key={line}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
                 </p>
               </div>
               <div className="pt-2">
                 <p className="text-[13px] text-white font-medium mb-1">Contact</p>
                 <p className="text-[12px] text-gray-500 font-light leading-relaxed">
-                  +44 (0) 1590 677145<br />
-                  info@pumphouseauctions.co.uk
+                  <a href={CONTACT.phoneHref} className="hover:text-pumphouse-gold transition-colors">{CONTACT.phone}</a>
+                  <br />
+                  <a href={CONTACT.emailHref} className="hover:text-pumphouse-gold transition-colors">{CONTACT.email}</a>
                 </p>
+              </div>
+              <div className="pt-2">
+                <p className="text-[13px] text-white font-medium mb-1">Collections</p>
+                <p className="text-[12px] text-gray-500 font-light leading-relaxed">{HOURS.collections}</p>
               </div>
             </div>
           </div>
@@ -120,13 +160,11 @@ const Footer: React.FC = () => {
         {/* Bottom Tier: Legal & Copyright */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[10px] uppercase tracking-[0.2em] text-gray-600 font-medium">
-            <a href="#" className="hover:text-pumphouse-gold transition-colors">Terms & Conditions</a>
-            <a href="#" className="hover:text-pumphouse-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-pumphouse-gold transition-colors">Cookie Policy</a>
-            <a href="#" className="hover:text-pumphouse-gold transition-colors">Sitemap</a>
+            <Link to="/terms-conditions" className="hover:text-pumphouse-gold transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/privacy-policy" className="hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>
           </div>
-          <p className="text-[10px] text-gray-600 uppercase tracking-widest">
-            © 2024 PUMP HOUSE SPECIALIST AUCTIONS. ALL RIGHTS RESERVED.
+          <p className="text-[10px] text-gray-600 uppercase tracking-widest text-center md:text-right">
+            © {new Date().getFullYear()} Pump House Specialist Auctions Ltd. All rights reserved.
           </p>
         </div>
       </div>

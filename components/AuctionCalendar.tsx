@@ -1,33 +1,17 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { AUCTIONS } from '../constants/site.ts';
 
 const AuctionCalendar: React.FC = () => {
-  const auctions = [
-    {
-      date: "16 Feb",
-      year: "2024",
-      title: "General Auction",
-      location: "Pump House Specialist Auctions",
-      time: "Starts 10:00 AM",
-      viewing: "12th - 14th Feb | 10:00 - 16:00",
-      category: "General Sale"
-    },
-    {
-      date: "20 Feb",
-      year: "2024",
-      title: "Jewellery, Watches and Collectables",
-      location: "Pump House Specialist Auctions",
-      time: "Starts 11:00 AM",
-      viewing: "12th - 14th & 18th - 19th Feb | 10:00 - 16:00",
-      category: "Specialist Sale"
-    }
-  ];
+  // Homepage shows the next two; the full list lives on /calendar.
+  const auctions = AUCTIONS.slice(0, 2);
 
   const stats = [
     { label: "Lots Per Month", value: "1,500+" },
     { label: "Registered Buyers", value: "80K" },
     { label: "Monthly Auctions", value: "2" },
-    { label: "Years Experience", value: "50+" }
+    { label: "Years Combined Experience", value: "50+" }
   ];
 
   return (
@@ -35,7 +19,7 @@ const AuctionCalendar: React.FC = () => {
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         
         {/* Header */}
-        <div className="flex flex-col items-center mb-20 text-center">
+        <div data-reveal className="flex flex-col items-center mb-20 text-center">
           <div className="flex items-center space-x-4 mb-6">
             <div className="h-px w-8 bg-pumphouse-gold/40"></div>
             <span className="text-[10px] uppercase tracking-[0.5em] text-pumphouse-gold font-bold">What's On</span>
@@ -46,7 +30,7 @@ const AuctionCalendar: React.FC = () => {
         </div>
 
         {/* Auction List - Christie's Styled */}
-        <div className="space-y-0 border-t border-pumphouse-taupe mb-32">
+        <div data-reveal-group className="space-y-0 border-t border-pumphouse-taupe mb-32">
           {auctions.map((auction, idx) => (
             <div 
               key={idx} 
@@ -92,7 +76,7 @@ const AuctionCalendar: React.FC = () => {
         {/* Stats and Narrative Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
           {/* Narrative */}
-          <div className="max-w-xl">
+          <div data-reveal className="max-w-xl">
             <span className="text-[10px] uppercase tracking-[0.5em] text-pumphouse-gold font-bold mb-6 block">Our Impact</span>
             <h3 className="font-serif text-3xl md:text-4xl text-pumphouse-charcoal mb-8 leading-tight">
               A Global Audience for <br /> Exquisite Collections
@@ -106,12 +90,12 @@ const AuctionCalendar: React.FC = () => {
               </p>
             </div>
             <div className="mt-10">
-              <a href="#" className="hover-underline-animation text-[11px] uppercase tracking-[0.3em] font-bold py-2">Our Results Archive</a>
+              <Link to="/calendar" className="hover-underline-animation text-[11px] uppercase tracking-[0.3em] font-bold py-2">View Full Calendar</Link>
             </div>
           </div>
 
           {/* Key Figures Grid */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-16 py-12 px-8 bg-white border border-pumphouse-taupe shadow-sm">
+          <div data-reveal-group className="grid grid-cols-2 gap-x-12 gap-y-16 py-12 px-8 bg-white border border-pumphouse-taupe shadow-sm">
             {stats.map((stat, i) => (
               <div key={i} className="text-center md:text-left">
                 <p className="font-serif text-4xl md:text-5xl text-pumphouse-charcoal mb-2">{stat.value}</p>

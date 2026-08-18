@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 const ChatWidget: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   if (!isOpen) {
     return (

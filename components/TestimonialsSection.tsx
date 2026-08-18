@@ -30,7 +30,7 @@ const TestimonialsSection: React.FC = () => {
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         
         {/* Editorial Header */}
-        <div className="text-center mb-24">
+        <div data-reveal className="text-center mb-24">
           <div className="flex items-center justify-center space-x-4 mb-6">
             <div className="h-px w-12 bg-gray-200"></div>
             <span className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-semibold">Customer Reviews</span>
@@ -42,7 +42,7 @@ const TestimonialsSection: React.FC = () => {
         </div>
 
         {/* Testimonials Staggered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        <div data-reveal-group className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {testimonials.map((t, idx) => (
             <div 
               key={idx} 

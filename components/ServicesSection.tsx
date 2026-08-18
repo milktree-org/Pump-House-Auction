@@ -1,5 +1,8 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { CONTACT, IMAGES } from '../constants/site.ts';
+import Button from './Button.tsx';
 
 const ServicesSection: React.FC = () => {
   const services = [
@@ -7,33 +10,37 @@ const ServicesSection: React.FC = () => {
       title: "Fine Art Auctions",
       subtitle: "Valuations & Consignments",
       description: "Our specialist team provides detailed estimates for fine art, paintings, and works of excellence. With access to global market data, we ensure your collection is positioned for maximum visibility and value.",
-      image: "https://images.unsplash.com/photo-1578321272176-b7bbc067985c?auto=format&fit=crop&q=80&w=1200",
+      image: IMAGES.jewelleryPile,
+      href: "/sell",
     },
     {
       title: "Antique Auctions",
       subtitle: "Furniture & Works of Art",
       description: "From period furniture to rare collectibles, we manage the entire auction process with discretion and expertise. We guide sellers through every stage, from initial appraisal to the final fall of the hammer.",
-      image: "https://images.unsplash.com/photo-1501004318641-729e4b33bd0c?auto=format&fit=crop&q=80&w=1200",
+      image: IMAGES.pediment,
+      href: "/sell",
     },
     {
       title: "Estate & Tax Valuations",
       subtitle: "Inheritance Tax & Probate",
       description: "Professional, confidential valuation services for inheritance tax, insurance, and family division. Our reports are prepared to the highest industry standards for legal and financial institutions.",
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&q=80&w=1200",
+      image: IMAGES.reversoWatch,
+      href: "/probate",
     },
     {
       title: "Property Clearance",
       subtitle: "Strategic Advice",
       description: "Discreet and efficient management for partial or complete house contents. Our experienced porters and specialists ensure that significant items are identified for auction while handling logistics seamlessly.",
-      image: "https://images.unsplash.com/photo-1581850518616-bcb8077fa2aa?auto=format&fit=crop&q=80&w=1200",
+      image: IMAGES.van,
+      href: "/house-clearance",
     }
   ];
 
   return (
-    <section className="bg-white">
+    <section className="bg-pumphouse-bg">
       {/* Editorial Header */}
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 pt-32 pb-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-100 pb-12 gap-8">
+      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-20">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-100 pb-12 gap-8">
           <div className="max-w-2xl">
             <span className="text-[10px] uppercase tracking-[0.5em] text-pumphouse-gold font-bold mb-4 block">Our Expertise</span>
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-pumphouse-charcoal leading-tight">
@@ -41,22 +48,23 @@ const ServicesSection: React.FC = () => {
             </h2>
           </div>
           <div className="text-right">
-            <button className="text-[11px] uppercase tracking-[0.2em] font-bold pb-1 border-b border-black hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all duration-300">
+            <Link to="/free-valuation" className="inline-block text-[11px] uppercase tracking-[0.2em] font-bold pb-1 border-b border-black hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all duration-300">
               Request a Valuation
-            </button>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Services Editorial Grid */}
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
+        <div data-reveal-group className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
           {services.map((service, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="aspect-[16/10] overflow-hidden mb-10">
                 <img 
                   src={service.image} 
-                  alt={service.title} 
+                  alt={service.title}
+                  loading="lazy"
                   className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-[1.03]"
                 />
               </div>
@@ -68,9 +76,9 @@ const ServicesSection: React.FC = () => {
                 <p className="text-[#666] text-sm md:text-base leading-relaxed font-light mb-8">
                   {service.description}
                 </p>
-                <a href="#" className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold border-b border-transparent group-hover:border-pumphouse-gold transition-all">
+                <Link to={service.href} className="inline-block text-[10px] uppercase tracking-[0.3em] font-bold border-b border-transparent group-hover:border-pumphouse-gold transition-all">
                   Read More
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -78,12 +86,14 @@ const ServicesSection: React.FC = () => {
       </div>
 
       {/* Full Width Spotlight: House Calls */}
-      <div className="bg-[#F9F8F6] py-32 border-t border-b border-pumphouse-taupe">
-        <div className="max-w-screen-xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-20">
+      <div className="bg-white py-24 md:py-32 border-t border-b border-pumphouse-taupe">
+        <div data-reveal-group className="max-w-screen-2xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2 aspect-square overflow-hidden shadow-sm">
             <img 
-              src="https://images.unsplash.com/photo-1618403088890-3d9ff6f4c847?auto=format&fit=crop&q=80&w=1200" 
-              alt="Professional Valuation" 
+              src={IMAGES.approach} 
+              alt="The approach to the saleroom on the A32 Wickham Road"
+              loading="lazy"
+            
               className="w-full h-full object-cover grayscale-[10%]"
             />
           </div>
@@ -103,9 +113,9 @@ const ServicesSection: React.FC = () => {
               </p>
             </div>
             <div className="pt-4">
-              <a href="mailto:valuations@pumphouseauctions.co.uk" className="inline-block px-12 py-5 bg-pumphouse-charcoal text-white text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-pumphouse-gold transition-colors duration-500">
+              <Button href={CONTACT.emailHref} variant="tertiary">
                 Contact a Specialist
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -114,8 +124,10 @@ const ServicesSection: React.FC = () => {
       {/* Prestigious Location Feature */}
       <div className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=2500" 
-          alt="The Historic Pump House" 
+          src={IMAGES.buildingWide} 
+          alt="Soberton Pumping Station, home of Pump House Specialist Auctions"
+          loading="lazy"
+        
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20"></div>
@@ -124,26 +136,16 @@ const ServicesSection: React.FC = () => {
         <div className="absolute inset-0 flex items-center justify-center">
            <div className="text-center text-white px-6">
              <span className="text-[10px] uppercase tracking-[0.6em] mb-4 block opacity-80">Our Venue</span>
-             <h4 className="font-serif text-4xl md:text-6xl italic drop-shadow-lg">The Historic Pump House</h4>
+             <h4 className="font-serif text-4xl md:text-6xl italic drop-shadow-lg">Soberton Pumping Station</h4>
              <div className="mt-8 flex items-center justify-center space-x-6">
                 <span className="w-12 h-px bg-white/40"></span>
-                <span className="text-[11px] uppercase tracking-[0.4em] font-medium">Southampton, UK</span>
+                <span className="text-[11px] uppercase tracking-[0.4em] font-medium">Wickham Road, Hampshire</span>
                 <span className="w-12 h-px bg-white/40"></span>
              </div>
            </div>
         </div>
       </div>
 
-      {/* Subtle Bottom Navigation Indicator */}
-      <div className="w-full py-8 bg-white border-b border-gray-100 flex justify-center">
-        <div className="flex items-center space-x-8 text-[10px] uppercase tracking-[0.4em] font-bold text-gray-400">
-           <a href="#" className="hover:text-pumphouse-charcoal transition-colors">Calendar</a>
-           <span className="w-1.5 h-1.5 rounded-full bg-pumphouse-gold"></span>
-           <a href="#" className="hover:text-pumphouse-charcoal transition-colors">Departments</a>
-           <span className="w-1.5 h-1.5 rounded-full bg-pumphouse-gold"></span>
-           <a href="#" className="hover:text-pumphouse-charcoal transition-colors">Results</a>
-        </div>
-      </div>
     </section>
   );
 };
