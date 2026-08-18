@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pumphouseauctions.co.uk/sitemap.xml

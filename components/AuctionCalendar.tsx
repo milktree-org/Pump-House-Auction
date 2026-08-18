@@ -90,7 +90,7 @@ const AuctionCalendar: React.FC = () => {
               </p>
             </div>
             <div className="mt-10">
-              <Link to="/calendar" className="hover-underline-animation text-[11px] uppercase tracking-[0.3em] font-bold py-2">View Full Calendar</Link>
+              <Link to="/future-auctions-date/" className="hover-underline-animation text-[11px] uppercase tracking-[0.3em] font-bold py-2">View Full Calendar</Link>
             </div>
           </div>
 

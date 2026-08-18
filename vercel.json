@@ -1,5 +1,29 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/buy", "destination": "/buyers-faq/", "permanent": true },
+    { "source": "/our-story", "destination": "/about-us-page/", "permanent": true },
+    { "source": "/about", "destination": "/about-us-page/", "permanent": true },
+    { "source": "/about-us", "destination": "/about-us-page/", "permanent": true },
+    { "source": "/house-clearance", "destination": "/clearance/", "permanent": true },
+    { "source": "/calendar", "destination": "/future-auctions-date/", "permanent": true },
+    { "source": "/contact", "destination": "/contact-us/", "permanent": true },
+    { "source": "/terms", "destination": "/terms-conditions/", "permanent": true },
+    { "source": "/privacy", "destination": "/privacy-policy/", "permanent": true },
+
+    { "source": "/home-new", "destination": "/", "permanent": true },
+    { "source": "/selling-you-items", "destination": "/sell/", "permanent": true },
+    { "source": "/sellers-campaign", "destination": "/sell/", "permanent": true },
+    { "source": "/free-valuation-may-2024", "destination": "/free-valuation/", "permanent": true },
+    { "source": "/probate-landing-page", "destination": "/probate/", "permanent": true },
+    { "source": "/bid-live", "destination": "/catalogue/", "permanent": true },
+    { "source": "/media/probate-explainer", "destination": "/probate/", "permanent": true },
+
+    { "source": "/fine-art", "destination": "/gallery/", "permanent": true },
+    { "source": "/jewellery", "destination": "/gallery/", "permanent": true },
+    { "source": "/watches", "destination": "/gallery/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

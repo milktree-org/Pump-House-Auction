@@ -183,7 +183,7 @@ const OurStoryPage: React.FC = () => {
             You do not have to be buying or selling — anyone is welcome to visit the saleroom at {CONTACT.addressLines[0]}, {CONTACT.addressLines[1]}.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button href="/free-valuation" variant="primary" onDark>
+            <Button href="/free-valuation/" variant="primary" onDark>
               Request a Free Valuation
             </Button>
             <Button href={CONTACT.phoneHref} variant="secondary" onDark>

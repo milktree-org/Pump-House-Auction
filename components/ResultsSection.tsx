@@ -69,7 +69,7 @@ const ResultsSection: React.FC = () => {
 
         {/* CTA */}
         <div data-reveal className="flex justify-center">
-          <Button href="/gallery" variant="secondary">
+          <Button href="/gallery/" variant="secondary">
             View All Results
           </Button>
         </div>

@@ -147,7 +147,7 @@ const CataloguePage: React.FC = () => {
           <div data-reveal className="border-t border-white/15 mt-16 pt-10">
             <p className="text-gray-400 font-light leading-relaxed max-w-2xl">
               New to bidding with us?{' '}
-              <Link to="/buy" className="text-white border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
+              <Link to="/buyers-faq/" className="text-white border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
                 Read our guide to the four ways to bid
               </Link>
               , including commission and telephone bidding.
@@ -174,7 +174,7 @@ const CataloguePage: React.FC = () => {
                 <Button href={PLATFORMS.portalPast} external variant="tertiary">
                   Search Past Auctions
                 </Button>
-                <Button href="/gallery" variant="secondary">
+                <Button href="/gallery/" variant="secondary">
                   View Sold Highlights
                 </Button>
               </div>

@@ -59,7 +59,7 @@ const ProbatePage: React.FC = () => (
             </div>
             <div className="mt-10">
               <Link
-                to="/our-story"
+                to="/about-us-page/"
                 className="inline-block text-[11px] uppercase tracking-[0.3em] font-bold pb-1 border-b border-pumphouse-charcoal hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all"
               >
                 Meet the Team

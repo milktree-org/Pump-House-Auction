@@ -55,7 +55,7 @@ const DepartmentsSection: React.FC = () => {
         {/* Featured departments */}
         <div data-reveal-group className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16 mb-24">
           {featured.map((dept) => (
-            <Link key={dept.title} to="/gallery" className="group block">
+            <Link key={dept.title} to="/gallery/" className="group block">
               <div className="aspect-[4/5] overflow-hidden bg-pumphouse-bg mb-7">
                 <img
                   src={dept.image}
@@ -85,7 +85,7 @@ const DepartmentsSection: React.FC = () => {
             {further.map((item) => (
               <Link
                 key={item}
-                to="/gallery"
+                to="/gallery/"
                 className="group flex items-center justify-between border-b border-pumphouse-taupe py-6 hover:border-pumphouse-charcoal transition-colors duration-500"
               >
                 <span className="font-serif text-lg md:text-xl text-pumphouse-charcoal group-hover:text-pumphouse-navy transition-colors">

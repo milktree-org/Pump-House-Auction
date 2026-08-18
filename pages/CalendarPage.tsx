@@ -97,7 +97,7 @@ const CalendarPage: React.FC = () => (
             <Button href={PLATFORMS.bidLive} external variant="tertiary">
               Bid Live
             </Button>
-            <Button href="/buy" variant="secondary">
+            <Button href="/buyers-faq/" variant="secondary">
               How to Bid
             </Button>
           </div>

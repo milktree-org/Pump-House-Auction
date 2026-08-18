@@ -77,7 +77,7 @@ const SellWithUs: React.FC = () => {
 
             {/* CTA */}
             <div className="mt-14 flex flex-col sm:flex-row sm:items-center gap-6">
-              <Button href="/free-valuation" variant="primary">
+              <Button href="/free-valuation/" variant="primary">
                 Request a Free Valuation
               </Button>
               <p className="text-[13px] text-gray-500 font-light">

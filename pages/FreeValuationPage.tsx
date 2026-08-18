@@ -88,7 +88,7 @@ const FreeValuationPage: React.FC = () => {
                 </div>
                 <p className="text-[13px] text-gray-500 font-light leading-relaxed">
                   For larger collections we make complimentary house calls throughout the region. Written inheritance tax valuations are chargeable —{' '}
-                  <Link to="/probate" className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
+                  <Link to="/probate/" className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
                     see our probate service
                   </Link>
                   .

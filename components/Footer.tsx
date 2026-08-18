@@ -13,26 +13,26 @@ interface FooterLink {
 const Footer: React.FC = () => {
   const auctions: FooterLink[] = [
     { name: 'Home', href: '/' },
-    { name: 'Calendar', href: '/calendar' },
-    { name: 'Catalogue', href: '/catalogue' },
+    { name: 'Calendar', href: '/future-auctions-date/' },
+    { name: 'Catalogue', href: '/catalogue/' },
     { name: 'Bid Live', href: PLATFORMS.bidLive, external: true },
-    { name: 'Results', href: '/gallery' },
+    { name: 'Results', href: '/gallery/' },
   ];
 
   const services: FooterLink[] = [
-    { name: 'Buy', href: '/buy' },
-    { name: 'Sell', href: '/sell' },
-    { name: 'House Clearance', href: '/house-clearance' },
-    { name: 'Probate', href: '/probate' },
-    { name: 'Free Valuation', href: '/free-valuation' },
+    { name: 'Buy', href: '/buyers-faq/' },
+    { name: 'Sell', href: '/sell/' },
+    { name: 'House Clearance', href: '/clearance/' },
+    { name: 'Probate', href: '/probate/' },
+    { name: 'Free Valuation', href: '/free-valuation/' },
   ];
 
   const company: FooterLink[] = [
-    { name: 'About Us', href: '/our-story' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Terms & Conditions', href: '/terms-conditions' },
+    { name: 'About Us', href: '/about-us-page/' },
+    { name: 'Gallery', href: '/gallery/' },
+    { name: 'Contact', href: '/contact-us/' },
+    { name: 'Privacy Policy', href: '/privacy-policy/' },
+    { name: 'Terms & Conditions', href: '/terms-conditions/' },
   ];
 
   const socials: FooterLink[] = [
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
               </button>
             </form>
             <p className="mt-4 text-[10px] text-gray-600 uppercase tracking-widest leading-loose">
-              By subscribing, you agree to our <Link to="/privacy-policy" className="underline hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>.
+              By subscribing, you agree to our <Link to="/privacy-policy/" className="underline hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>.
             </p>
           </div>
         </div>
@@ -160,8 +160,8 @@ const Footer: React.FC = () => {
         {/* Bottom Tier: Legal & Copyright */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[10px] uppercase tracking-[0.2em] text-gray-600 font-medium">
-            <Link to="/terms-conditions" className="hover:text-pumphouse-gold transition-colors">Terms &amp; Conditions</Link>
-            <Link to="/privacy-policy" className="hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>
+            <Link to="/terms-conditions/" className="hover:text-pumphouse-gold transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/privacy-policy/" className="hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>
           </div>
           <p className="text-[10px] text-gray-600 uppercase tracking-widest text-center md:text-right">
             © {new Date().getFullYear()} Pump House Specialist Auctions Ltd. All rights reserved.

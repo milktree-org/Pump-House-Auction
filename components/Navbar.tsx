@@ -19,23 +19,23 @@ const NAV_LINKS: NavItem[] = [
     name: 'Services',
     href: '#',
     subItems: [
-      { name: 'Buy', href: '/buy' },
-      { name: 'Sell', href: '/sell' },
-      { name: 'House Clearance', href: '/house-clearance' },
-      { name: 'Probate', href: '/probate' },
+      { name: 'Buy', href: '/buyers-faq/' },
+      { name: 'Sell', href: '/sell/' },
+      { name: 'House Clearance', href: '/clearance/' },
+      { name: 'Probate', href: '/probate/' },
     ],
   },
   { name: 'Bid Live', href: PLATFORMS.bidLive, external: true },
   {
     name: 'About Us',
-    href: '/our-story',
+    href: '/about-us-page/',
     subItems: [
-      { name: 'Gallery', href: '/gallery' },
+      { name: 'Gallery', href: '/gallery/' },
     ],
   },
-  { name: 'Calendar', href: '/calendar' },
-  { name: 'Catalogue', href: '/catalogue' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Calendar', href: '/future-auctions-date/' },
+  { name: 'Catalogue', href: '/catalogue/' },
+  { name: 'Contact', href: '/contact-us/' },
 ];
 
 const Chevron: React.FC<{ className?: string }> = ({ className }) => (
@@ -197,7 +197,7 @@ const Navbar: React.FC = () => {
               {NAV_LINKS.slice(4).map((link) => renderDesktopItem(link, 'right'))}
             </nav>
 
-            <Button href="/free-valuation" variant="primary" className="hidden sm:block !px-6 !py-3">
+            <Button href="/free-valuation/" variant="primary" className="hidden sm:block !px-6 !py-3">
               Free Valuation
             </Button>
 
@@ -336,7 +336,7 @@ const Navbar: React.FC = () => {
 
           {/* Panel footer: CTA + contact */}
           <div className="shrink-0 border-t border-pumphouse-taupe px-6 py-6 space-y-6 bg-white/60">
-            <Button href="/free-valuation" onClick={closeMenu} variant="primary" fullWidth>
+            <Button href="/free-valuation/" onClick={closeMenu} variant="primary" fullWidth>
               Free Valuation
             </Button>
 

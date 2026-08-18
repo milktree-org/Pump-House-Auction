@@ -41,10 +41,10 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 md:gap-6">
-            <Button href="/catalogue" variant="primary" onDark>
+            <Button href="/catalogue/" variant="primary" onDark>
               View Catalogue
             </Button>
-            <Button href="/free-valuation" variant="secondary" onDark>
+            <Button href="/free-valuation/" variant="secondary" onDark>
               Free Valuation
             </Button>
           </div>

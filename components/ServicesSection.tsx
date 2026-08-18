@@ -11,28 +11,28 @@ const ServicesSection: React.FC = () => {
       subtitle: "Valuations & Consignments",
       description: "Our specialist team provides detailed estimates for fine art, paintings, and works of excellence. With access to global market data, we ensure your collection is positioned for maximum visibility and value.",
       image: IMAGES.jewelleryPile,
-      href: "/sell",
+      href: "/sell/",
     },
     {
       title: "Antique Auctions",
       subtitle: "Furniture & Works of Art",
       description: "From period furniture to rare collectibles, we manage the entire auction process with discretion and expertise. We guide sellers through every stage, from initial appraisal to the final fall of the hammer.",
       image: IMAGES.pediment,
-      href: "/sell",
+      href: "/sell/",
     },
     {
       title: "Estate & Tax Valuations",
       subtitle: "Inheritance Tax & Probate",
       description: "Professional, confidential valuation services for inheritance tax, insurance, and family division. Our reports are prepared to the highest industry standards for legal and financial institutions.",
       image: IMAGES.reversoWatch,
-      href: "/probate",
+      href: "/probate/",
     },
     {
       title: "Property Clearance",
       subtitle: "Strategic Advice",
       description: "Discreet and efficient management for partial or complete house contents. Our experienced porters and specialists ensure that significant items are identified for auction while handling logistics seamlessly.",
       image: IMAGES.van,
-      href: "/house-clearance",
+      href: "/clearance/",
     }
   ];
 
@@ -48,7 +48,7 @@ const ServicesSection: React.FC = () => {
             </h2>
           </div>
           <div className="text-right">
-            <Link to="/free-valuation" className="inline-block text-[11px] uppercase tracking-[0.2em] font-bold pb-1 border-b border-black hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all duration-300">
+            <Link to="/free-valuation/" className="inline-block text-[11px] uppercase tracking-[0.2em] font-bold pb-1 border-b border-black hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all duration-300">
               Request a Valuation
             </Link>
           </div>

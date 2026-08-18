@@ -34,7 +34,7 @@ const DiscoverSection: React.FC = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-pumphouse-gold transition-all group-hover:w-full"></span>
               </a>
             </div>
-            <Button href="/sell" variant="secondary">
+            <Button href="/sell/" variant="secondary">
               Our Services
             </Button>
           </div>
