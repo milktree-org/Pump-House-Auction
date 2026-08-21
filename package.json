@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "build:client": "vite build"
+    "build:client": "vite build",
+    "catalogue": "node scripts/extract-catalogue.mjs"
   },
   "dependencies": {
     "@google/genai": "latest",
@@ -20,6 +21,7 @@
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "pdfjs-dist": "^6.2.108",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2",

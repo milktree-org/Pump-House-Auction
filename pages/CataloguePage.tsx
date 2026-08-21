@@ -4,10 +4,13 @@ import { AUCTIONS, CONTACT, FEES, IMAGES, PLATFORMS, VIEWING_NOTE } from '../con
 import PageHero from '../components/PageHero.tsx';
 import Button from '../components/Button.tsx';
 import ServiceCTA from '../components/ServiceCTA.tsx';
+import CatalogueLots from '../components/CatalogueLots.tsx';
 
-// Lots live on the Auction Technology Group portal rather than being duplicated
-// here, so this page routes buyers straight to the sale they want. When a feed
-// becomes available these cards can be replaced with real lot grids.
+// The lot listing below is parsed from the printed catalogue PDF, so the lots are
+// searchable on the page and indexable by search engines. Bidding itself still
+// happens on the Auction Technology Group portal, so these cards route buyers
+// straight to the sale they want. If an ATG feed becomes available it can replace
+// the PDF extraction as the source of the listing.
 const CataloguePage: React.FC = () => {
   const platforms = [
     {
@@ -108,6 +111,9 @@ const CataloguePage: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* Lot listing, parsed from the printed catalogue */}
+      <CatalogueLots />
 
       {/* Where to bid */}
       <section className="bg-pumphouse-charcoal text-white py-24 md:py-32">
