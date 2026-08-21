@@ -1,5 +1,5 @@
 import React from 'react';
-import LegalPage from '../components/LegalPage.tsx';
+import LegalPage, { LegalSection } from '../components/LegalPage.tsx';
 
 // Ported verbatim from pumphouseauctions.co.uk/terms-conditions/.
 // On the live site clauses 1-24 are run together inside a single paragraph;
@@ -139,63 +139,84 @@ const BUYER_CLAUSES: string[] = [
   'All purchased lots must be collected and paid within 5 days of the sale, all uncollected lots after 5 days will be left at the sole risk of the purchaser and subject to a charge for warehousing at a cost of £10 per lot per day.',
 ];
 
+
+const VendorClauses: React.FC = () => (
+  <ol className="space-y-8 list-none pl-0">
+    {VENDOR_CLAUSES.map((clause) => (
+      <li key={clause.n} className="flex gap-5">
+        <span className="font-serif text-[15px] text-pumphouse-gold shrink-0 pt-[3px] w-6">{clause.n}.</span>
+        <div className="flex-1">
+          {clause.title && <h3>{clause.title}</h3>}
+          <p>{clause.body}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+);
+
+const SECTIONS: LegalSection[] = [
+  {
+    id: 'vendors',
+    title: 'Vendors — Terms and Conditions',
+    content: <VendorClauses />,
+  },
+  {
+    id: 'vendor-summary',
+    title: 'Summary of Vendor Fees',
+    content: (
+      <>
+        <div className="border border-pumphouse-taupe bg-pumphouse-bg p-8 mb-6">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
+            {[
+              ['Vendors commission', '17.5% + VAT'],
+              ['Indemnity', '2.5% plus VAT'],
+              ['Lotting fee', '£5 per lot plus VAT (per sale even if unsold)'],
+              ['PAT testing', '£3 per electrical item'],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold mb-2">{label}</dt>
+                <dd className="font-serif text-xl text-pumphouse-charcoal">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <p>
+          These Terms and Conditions are subject to change and additional terms and conditions may be detailed
+          on our website – which are binding once this document is signed. All plus VAT.
+        </p>
+        <p>
+          Payment to be made by bank transfer within 28 days of all lots entered being sold. There will be a
+          charge of £2.00 for a cheque. No charge for direct bank transfers.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 'buyers',
+    title: 'Buyers — Terms and Conditions',
+    content: (
+      <>
+        {BUYER_CLAUSES.map((clause, i) => (
+          <p key={i}>{clause}</p>
+        ))}
+        <p className="!text-pumphouse-charcoal font-medium uppercase tracking-[0.15em] !text-[13px] border-t border-pumphouse-taupe pt-6 mt-8">
+          All lots subject to buyers premium 22% + VAT
+        </p>
+      </>
+    ),
+  },
+];
+
 const TermsPage: React.FC = () => (
   <LegalPage
     eyebrow="Legal"
     title="Terms & Conditions"
     standfirst="The terms on which Pump House Specialist Auctions Limited (PHSA) accepts entries for sale and takes bids."
-  >
-    <h2>Vendors — Terms and Conditions</h2>
-
-    <ol className="space-y-7 list-none pl-0">
-      {VENDOR_CLAUSES.map((clause) => (
-        <li key={clause.n} className="border-t border-pumphouse-taupe pt-6">
-          {clause.title ? (
-            <>
-              <h3 className="flex gap-4">
-                <span className="font-serif text-pumphouse-gold shrink-0">{clause.n}.</span>
-                <span>{clause.title}</span>
-              </h3>
-              <p className="pl-9">{clause.body}</p>
-            </>
-          ) : (
-            /* Clauses 21 and 24 carry no heading in the original wording. */
-            <p className="flex gap-4">
-              <span className="font-serif text-pumphouse-gold shrink-0">{clause.n}.</span>
-              <span>{clause.body}</span>
-            </p>
-          )}
-        </li>
-      ))}
-    </ol>
-
-    <div className="mt-12 border border-pumphouse-taupe bg-pumphouse-bg p-8">
-      <p className="!mb-4">
-        These Terms and Conditions are subject to change and additional terms and conditions may be detailed on
-        our website – which are binding once this document is signed.
-      </p>
-      <p className="!mb-4">
-        <strong>Vendors commission is 17.5% + VAT</strong> – Indemnity 2.5% plus VAT – Lotting fee £5 per lot
-        plus VAT (per sale even if unsold). PAT testing £3 per electrical item. All plus VAT.
-      </p>
-      <p className="!mb-0">
-        Payment to be made by bank transfer within 28 days of all lots entered being sold. There will be a
-        charge of £2.00 for a cheque. No charge for direct bank transfers.
-      </p>
-    </div>
-
-    <h2>Buyers — Terms and Conditions</h2>
-
-    <div className="space-y-5">
-      {BUYER_CLAUSES.map((clause, i) => (
-        <p key={i}>{clause}</p>
-      ))}
-    </div>
-
-    <p className="mt-10 border-t border-pumphouse-taupe pt-8 !text-pumphouse-charcoal font-medium uppercase tracking-[0.15em] text-[13px]">
-      All lots subject to buyers premium 22% + VAT
-    </p>
-  </LegalPage>
+    note="Reproduced from our published terms and conditions."
+    sections={SECTIONS}
+    ctaHeading="Unclear on any of these terms?"
+    ctaBody="Please ask a member of staff for clarification before registering to bid or entering a lot. We are happy to talk it through."
+  />
 );
 
 export default TermsPage;
