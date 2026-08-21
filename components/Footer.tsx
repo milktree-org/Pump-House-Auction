@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <footer className="relative bg-pumphouse-charcoal text-white pt-32 pb-12 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-pumphouse-charcoal text-white pt-32 pb-24 overflow-hidden border-t border-white/5">
       <div className="relative z-10 max-w-screen-2xl mx-auto px-6 md:px-12">
 
         {/* Top Tier: Brand & Newsletter */}
@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="pt-2">
                 <p className="text-[13px] text-white font-medium mb-1">Contact</p>
-                <p className="text-[12px] text-gray-500 font-light leading-relaxed">
+                <p className="text-[12px] text-gray-500 font-light leading-relaxed break-words">
                   <a href={CONTACT.phoneHref} className="hover:text-pumphouse-gold transition-colors">{CONTACT.phone}</a>
                   <br />
                   <a href={CONTACT.emailHref} className="hover:text-pumphouse-gold transition-colors">{CONTACT.email}</a>
@@ -145,12 +145,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Tier: Legal & Copyright */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[10px] uppercase tracking-[0.2em] text-gray-600 font-medium">
             <Link to="/terms-conditions/" className="hover:text-pumphouse-gold transition-colors">Terms &amp; Conditions</Link>
             <Link to="/privacy-policy/" className="hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>
           </div>
-          <p className="text-[10px] text-gray-600 uppercase tracking-widest text-center md:text-right">
+          <p className="text-[10px] text-gray-600 uppercase tracking-widest text-center lg:text-right">
             © {new Date().getFullYear()} Pump House Specialist Auctions Ltd. All rights reserved.
           </p>
         </div>

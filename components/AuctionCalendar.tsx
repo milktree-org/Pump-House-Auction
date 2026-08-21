@@ -34,16 +34,16 @@ const AuctionCalendar: React.FC = () => {
           {auctions.map((auction, idx) => (
             <div 
               key={idx} 
-              className="group relative grid grid-cols-1 md:grid-cols-12 items-center py-12 border-b border-pumphouse-taupe hover:bg-white transition-colors duration-500 px-4"
+              className="group relative grid grid-cols-1 lg:grid-cols-12 lg:gap-x-8 items-center py-12 border-b border-pumphouse-taupe hover:bg-white transition-colors duration-500 px-4"
             >
               {/* Date Column */}
-              <div className="md:col-span-2 mb-6 md:mb-0">
+              <div className="lg:col-span-2 mb-6 lg:mb-0">
                 <p className="font-serif text-3xl text-pumphouse-charcoal">{auction.date}</p>
                 <p className="text-[10px] uppercase tracking-widest text-gray-400 font-medium mt-1">{auction.year}</p>
               </div>
 
               {/* Title & Info Column */}
-              <div className="md:col-span-6 mb-8 md:mb-0">
+              <div className="lg:col-span-6 mb-8 lg:mb-0">
                 <span className="text-[9px] uppercase tracking-[0.3em] text-pumphouse-gold font-bold mb-2 block">{auction.category}</span>
                 <h3 className="font-serif text-2xl md:text-3xl text-pumphouse-charcoal group-hover:text-pumphouse-navy transition-colors">
                   {auction.title}
@@ -56,13 +56,13 @@ const AuctionCalendar: React.FC = () => {
               </div>
 
               {/* Viewing Details Column */}
-              <div className="md:col-span-3 mb-8 md:mb-0">
+              <div className="lg:col-span-3 mb-8 lg:mb-0">
                 <p className="text-[9px] uppercase tracking-widest text-gray-400 mb-2 font-bold">Viewing Days</p>
                 <p className="text-[13px] text-[#555] leading-relaxed font-light">{auction.viewing}</p>
               </div>
 
               {/* CTA Column */}
-              <div className="md:col-span-1 flex justify-end">
+              <div className="lg:col-span-1 flex justify-end">
                 <button className="w-12 h-12 flex items-center justify-center border border-pumphouse-taupe rounded-full group-hover:border-pumphouse-charcoal group-hover:bg-pumphouse-charcoal group-hover:text-white transition-all duration-500">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />

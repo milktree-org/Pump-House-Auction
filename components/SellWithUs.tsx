@@ -38,7 +38,7 @@ const SellWithUs: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start mb-24">
 
           {/* Image */}
-          <div data-reveal="image" className="lg:col-span-5">
+          <div data-reveal="image" className="lg:col-span-5 order-last lg:order-none">
             <div className="aspect-[4/5] w-full overflow-hidden">
               <img
                 src={IMAGES.teamGroup}

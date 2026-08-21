@@ -161,4 +161,5 @@ export const AUCTIONS: Auction[] = [
   },
 ];
 
-export const VIEWING_NOTE = 'Thursday, Friday and Saturday of sale week, 10am - 4pm.';
+export const VIEWING_NOTE =
+  'Thursday, Friday and Saturday of sale week, 10am - 4pm.';

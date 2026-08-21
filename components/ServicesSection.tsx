@@ -47,7 +47,7 @@ const ServicesSection: React.FC = () => {
               Auction Services <br /> & Specialist Advice
             </h2>
           </div>
-          <div className="text-right">
+          <div className="text-left md:text-right">
             <Link to="/free-valuation/" className="inline-block text-[11px] uppercase tracking-[0.2em] font-bold pb-1 border-b border-black hover:text-pumphouse-gold hover:border-pumphouse-gold transition-all duration-300">
               Request a Valuation
             </Link>
@@ -59,8 +59,8 @@ const ServicesSection: React.FC = () => {
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 pb-32">
         <div data-reveal-group className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
           {services.map((service, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="aspect-[16/10] overflow-hidden mb-10">
+            <div key={index} className="group cursor-pointer flex flex-col">
+              <div className="aspect-[16/10] overflow-hidden order-last mt-10 md:order-first md:mt-0 md:mb-10">
                 <img 
                   src={service.image} 
                   alt={service.title}
@@ -87,16 +87,7 @@ const ServicesSection: React.FC = () => {
 
       {/* Full Width Spotlight: House Calls */}
       <div className="bg-white py-24 md:py-32 border-t border-b border-pumphouse-taupe">
-        <div data-reveal-group className="max-w-screen-2xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          <div className="w-full lg:w-1/2 aspect-square overflow-hidden shadow-sm">
-            <img 
-              src={IMAGES.approach} 
-              alt="The approach to the saleroom on the A32 Wickham Road"
-              loading="lazy"
-            
-              className="w-full h-full object-cover grayscale-[10%]"
-            />
-          </div>
+        <div data-reveal-group className="max-w-screen-2xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2 space-y-10">
             <div>
               <span className="text-[10px] uppercase tracking-[0.5em] text-gray-400 font-semibold mb-4 block">Personalised Service</span>
@@ -117,6 +108,15 @@ const ServicesSection: React.FC = () => {
                 Contact a Specialist
               </Button>
             </div>
+          </div>
+          <div className="w-full lg:w-1/2 aspect-square overflow-hidden shadow-sm">
+            <img 
+              src={IMAGES.approach} 
+              alt="The approach to the saleroom on the A32 Wickham Road"
+              loading="lazy"
+            
+              className="w-full h-full object-cover grayscale-[10%]"
+            />
           </div>
         </div>
       </div>

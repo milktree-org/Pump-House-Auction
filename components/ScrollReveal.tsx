@@ -27,10 +27,13 @@ const ScrollReveal: React.FC = () => {
       document.querySelectorAll<HTMLElement>('[data-reveal], [data-reveal-group]')
     );
     let frame = 0;
+    let observer: ResizeObserver | null = null;
 
     const detach = () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      observer?.disconnect();
+      observer = null;
     };
 
     const sweep = () => {
@@ -51,6 +54,17 @@ const ScrollReveal: React.FC = () => {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
+
+    // Scrolling is not the only thing that moves an element across the trigger
+    // line. Styles from the Tailwind CDN, webfonts and lazy images all land
+    // after first paint and reflow the page, which can push a not-yet-revealed
+    // element below the fold *after* the sweep has passed it — leaving it
+    // stranded at opacity 0 until the next scroll event. Re-sweep whenever the
+    // document changes height.
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(onScroll);
+      observer.observe(document.body);
+    }
 
     // Catch whatever is already in view on load.
     sweep();

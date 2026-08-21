@@ -46,8 +46,8 @@ const ResultsSection: React.FC = () => {
         {/* Results */}
         <div data-reveal-group className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-20">
           {results.map((lot) => (
-            <article key={lot.title} className="group">
-              <div className="aspect-square overflow-hidden bg-white mb-8">
+            <article key={lot.title} className="group flex flex-col">
+              <div className="aspect-square overflow-hidden bg-white order-last mt-8 md:order-first md:mt-0 md:mb-8">
                 <img
                   src={lot.image}
                   alt={lot.title}

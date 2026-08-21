@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Hero Content Area */}
-      <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-6 md:px-12 pb-16 md:pb-24 flex flex-col items-start md:items-end md:flex-row md:justify-between text-white">
+      <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-6 md:px-12 pb-16 md:pb-24 flex flex-col items-start lg:items-end lg:flex-row lg:justify-between lg:gap-12 text-white">
 
         {/* Headline and Supporting Text */}
         <div className={`max-w-2xl transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>

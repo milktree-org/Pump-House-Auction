@@ -66,7 +66,7 @@ const HouseClearancePage: React.FC = () => {
       <section className="bg-pumphouse-bg py-24 md:py-32 border-y border-pumphouse-taupe">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-center">
-            <div data-reveal="image" className="lg:col-span-5">
+            <div data-reveal="image" className="lg:col-span-5 order-last lg:order-none">
               <div className="aspect-[4/3] overflow-hidden bg-white">
                 <img
                   src={IMAGES.gardenStatuary}

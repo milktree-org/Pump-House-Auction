@@ -55,8 +55,8 @@ const DepartmentsSection: React.FC = () => {
         {/* Featured departments */}
         <div data-reveal-group className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16 mb-24">
           {featured.map((dept) => (
-            <Link key={dept.title} to="/gallery/" className="group block">
-              <div className="aspect-[4/5] overflow-hidden bg-pumphouse-bg mb-7">
+            <Link key={dept.title} to="/gallery/" className="group flex flex-col">
+              <div className="aspect-[4/5] overflow-hidden bg-pumphouse-bg order-last mt-7 sm:order-first sm:mt-0 sm:mb-7">
                 <img
                   src={dept.image}
                   alt={dept.title}

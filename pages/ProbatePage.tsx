@@ -20,8 +20,8 @@ const ProbatePage: React.FC = () => (
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-center">
 
-          <div data-reveal="image" className="lg:col-span-5">
-            <div className="aspect-square overflow-hidden bg-pumphouse-bg">
+          <div data-reveal="image" className="lg:col-span-5 order-last lg:order-none flex flex-col">
+            <div className="aspect-square overflow-hidden bg-pumphouse-bg order-last mt-6 lg:order-first lg:mt-0">
               <img
                 src={IMAGES.teamChezza}
                 alt="Cheryl, head of probate valuations"
@@ -29,7 +29,7 @@ const ProbatePage: React.FC = () => (
                 className="w-full h-full object-cover object-top grayscale-[25%] hover:grayscale-0 transition-all duration-1000"
               />
             </div>
-            <p className="mt-6 font-serif text-2xl text-pumphouse-charcoal">Cheryl</p>
+            <p className="font-serif text-2xl text-pumphouse-charcoal lg:mt-6">Cheryl</p>
             <p className="text-[10px] uppercase tracking-[0.25em] text-pumphouse-gold font-bold mt-1">
               Head of Probate Valuations
             </p>

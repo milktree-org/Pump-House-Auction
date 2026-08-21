@@ -64,7 +64,7 @@ const CatalogueLots: React.FC = () => {
             </p>
           </div>
 
-          <Button href={catalogue.source} external variant="secondary" className="shrink-0">
+          <Button href={catalogue.source} external variant="secondary" className="shrink-0 self-start lg:self-auto">
             Download PDF ({catalogue.pdfPages} pages)
           </Button>
         </div>

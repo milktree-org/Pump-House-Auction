@@ -29,8 +29,8 @@ const TeamSection: React.FC = () => {
         {/* Team grid */}
         <ul data-reveal-group className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
           {TEAM.map((member) => (
-            <li key={member.name} className="group">
-              <div className="aspect-[4/5] overflow-hidden bg-pumphouse-bg mb-7">
+            <li key={member.name} className="group flex flex-col">
+              <div className="aspect-[4/5] overflow-hidden bg-pumphouse-bg order-last mt-7 sm:order-first sm:mt-0 sm:mb-7">
                 {member.image ? (
                   <img
                     src={member.image}

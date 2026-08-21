@@ -125,7 +125,7 @@ const OurStoryPage: React.FC = () => {
                   index % 2 === 1 ? 'lg:[&>figure]:order-2' : ''
                 }`}
               >
-                <figure className="lg:col-span-5 m-0">
+                <figure className="lg:col-span-5 m-0 order-last lg:order-none">
                   <div className="aspect-[4/3] overflow-hidden bg-white">
                     <img
                       src={entry.image}

@@ -207,7 +207,7 @@ const Navbar: React.FC = () => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Open menu"
-              className="lg:hidden ml-6 p-2 -mr-2 text-pumphouse-charcoal"
+              className="lg:hidden ml-6 -mr-[10px] w-11 h-11 flex items-center justify-center text-pumphouse-charcoal"
             >
               <span className="sr-only">Open menu</span>
               <span className="block w-6 space-y-[5px]" aria-hidden="true">
@@ -256,7 +256,7 @@ const Navbar: React.FC = () => {
               type="button"
               onClick={closeMenu}
               aria-label="Close menu"
-              className="p-2 -mr-2 text-pumphouse-charcoal hover:text-pumphouse-gold transition-colors"
+              className="-mr-[10px] w-11 h-11 flex items-center justify-center text-pumphouse-charcoal hover:text-pumphouse-gold transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
