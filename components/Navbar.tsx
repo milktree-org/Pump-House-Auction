@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
             : 'bg-[#EFEEEC] border-t-[4px] border-pumphouse-gold border-b border-gray-300 h-[100px]'
         }`}
       >
-        <div className="w-full max-w-screen-2xl mx-auto h-full px-6 flex justify-between items-center relative">
+        <div className="w-full max-w-screen-2xl mx-auto h-full px-6 md:px-12 flex justify-between items-center relative">
 
           {/* Left Side Navigation (Hidden on mobile) */}
           <div className="flex-1 hidden lg:flex items-center">
@@ -147,8 +147,12 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Centered Logo (The Diamond Plaque) */}
-          <div className="flex-none relative h-full flex justify-center items-center w-[120px] lg:w-[260px]">
-            <Link to="/" className="group relative w-full h-full flex items-center justify-center">
+          <div className="flex-none relative h-full flex justify-start lg:justify-center items-center w-auto lg:w-[260px]">
+            <Link
+              to="/"
+              aria-label="Pump House Specialist Auctions — home"
+              className="group relative w-full h-full flex items-center justify-start lg:justify-center"
+            >
 
               {/* Diamond Logo Plaque (Visible when not scrolled) */}
               <div
@@ -163,7 +167,7 @@ const Navbar: React.FC = () => {
                     <div className="-rotate-45 flex flex-col items-center justify-center w-full h-full pt-[100px]">
                       <img
                         src={IMAGES.logoLight}
-                        alt="Pump House Auctions"
+                        alt=""
                         className="h-[120px] w-auto object-contain z-10"
                       />
                     </div>
@@ -171,23 +175,17 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              {/* Text Logo — always on mobile, on scroll for desktop */}
-              <div
-                className={`transition-all duration-700 ease-in-out transform ${
+              {/* The logo itself — always on mobile and tablet, and on
+                  desktop once the plaque has retracted on scroll. */}
+              <img
+                src={IMAGES.logoLight}
+                alt=""
+                className={`w-auto object-contain transition-all duration-700 ease-in-out ${
                   isScrolled
-                    ? 'opacity-100 scale-100 translate-y-0'
-                    : 'opacity-100 lg:opacity-0 scale-100 lg:scale-75 translate-y-0 lg:translate-y-[20px] lg:pointer-events-none'
+                    ? 'h-[68px] lg:h-[70px] opacity-100'
+                    : 'h-[80px] opacity-100 lg:opacity-0 lg:pointer-events-none'
                 }`}
-              >
-                <div className="flex flex-col items-center">
-                  <span className="font-serif text-base lg:text-lg tracking-[0.15em] text-pumphouse-charcoal font-bold leading-none whitespace-nowrap">
-                    PUMP HOUSE
-                  </span>
-                  <span className="text-[6px] uppercase tracking-[0.4em] lg:tracking-[0.55em] text-pumphouse-gold mt-1 font-bold whitespace-nowrap">
-                    SPECIALIST AUCTIONS
-                  </span>
-                </div>
-              </div>
+              />
             </Link>
           </div>
 
@@ -248,14 +246,11 @@ const Navbar: React.FC = () => {
         >
           {/* Panel header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-pumphouse-taupe shrink-0">
-            <div className="flex flex-col">
-              <span className="font-serif text-base tracking-[0.15em] text-pumphouse-charcoal font-bold leading-none">
-                PUMP HOUSE
-              </span>
-              <span className="text-[6px] uppercase tracking-[0.4em] text-pumphouse-gold mt-1 font-bold">
-                SPECIALIST AUCTIONS
-              </span>
-            </div>
+            <img
+              src={IMAGES.logoLight}
+              alt="Pump House Specialist Auctions"
+              className="h-[52px] w-auto object-contain"
+            />
             <button
               ref={closeRef}
               type="button"
