@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { CONTACT } from '../constants/site.ts';
-import { submitEnquiry, SubmitResult } from '../constants/forms.ts';
+import { submitForm, SubmitResult } from '../constants/forms.ts';
 import Button from './Button.tsx';
 
 interface EnquiryFormProps {
+  /** Formspree endpoint this form posts to. */
+  endpoint: string;
+  /** Subject line on the notification email, and the label in Formspree. */
+  formName: string;
+  /** Recorded alongside the submission so we know which page it came from. */
+  pageSource?: string;
   /** Adds the "Interested in" department select. */
   showInterest?: boolean;
   /** Adds the image upload area for valuation requests. */
@@ -24,6 +30,9 @@ const INTERESTS = [
 ];
 
 const EnquiryForm: React.FC<EnquiryFormProps> = ({
+  endpoint,
+  formName,
+  pageSource,
   showInterest = false,
   showUpload = false,
   submitLabel = 'Send Message',
@@ -34,6 +43,7 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
   const [files, setFiles] = useState<File[]>([]);
   const [dragActive, setDragActive] = useState(false);
   const [pending, setPending] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
   const [result, setResult] = useState<SubmitResult | null>(null);
 
   const set = (field: keyof typeof values) => (
@@ -63,7 +73,21 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
       return;
     }
     setPending(true);
-    setResult(await submitEnquiry({ ...values, files }));
+    setResult(
+      await submitForm(
+        endpoint,
+        {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          interest: values.interest,
+          message: values.message,
+          page_source: pageSource ?? window.location.pathname,
+          _subject: formName + ' - pumphouseauctions.co.uk',
+        },
+        files
+      )
+    );
     setPending(false);
   };
 
@@ -230,6 +254,18 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
         </div>
       )}
 
+      {/* Honeypot — hidden from people, tempting to bots. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+        onChange={(e) => setHoneypot(e.target.value)}
+        value={honeypot}
+      />
+
       <div className="pt-4 flex flex-col gap-6">
         <Button type="submit" disabled={pending} variant="primary" className="self-start">
           {pending ? 'Sending…' : submitLabel}
@@ -237,28 +273,28 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
         <div aria-live="polite">
           {result?.status === 'sent' && (
-            <p className="text-[14px] text-pumphouse-charcoal font-light">
-              Thank you — your enquiry has been sent. We will be in touch shortly.
-            </p>
-          )}
-          {result?.status === 'unconfigured' && (
-            <div className="border-l-2 border-pumphouse-gold pl-5 py-1 text-[14px] font-light text-[#666] max-w-xl">
-              <p className="text-pumphouse-charcoal font-medium mb-1">This form is not connected yet.</p>
-              <p>
-                Please call{' '}
-                <a href={CONTACT.phoneHref} className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
-                  {CONTACT.phone}
-                </a>{' '}
-                or email{' '}
-                <a href={CONTACT.emailHref} className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
-                  {CONTACT.email}
-                </a>{' '}
-                and we will respond right away.
+            <div className="border-l-2 border-pumphouse-gold pl-5 py-1 max-w-xl">
+              <p className="text-pumphouse-charcoal font-medium mb-1">Thank you — your enquiry has been sent.</p>
+              <p className="text-[14px] text-[#666] font-light">
+                One of our specialists will be in touch shortly.
               </p>
             </div>
           )}
           {result?.status === 'error' && (
-            <p className="text-[14px] text-red-500 font-light">{result.message}</p>
+            <div className="border-l-2 border-red-400 pl-5 py-1 text-[14px] font-light text-[#666] max-w-xl">
+              <p className="text-red-500 mb-1">{result.message}</p>
+              <p>
+                You can also reach us on{' '}
+                <a href={CONTACT.phoneHref} className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
+                  {CONTACT.phone}
+                </a>{' '}
+                or{' '}
+                <a href={CONTACT.emailHref} className="text-pumphouse-charcoal border-b border-pumphouse-gold hover:text-pumphouse-gold transition-colors">
+                  {CONTACT.email}
+                </a>
+                .
+              </p>
+            </div>
           )}
         </div>
       </div>

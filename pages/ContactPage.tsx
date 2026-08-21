@@ -3,6 +3,7 @@ import { CONTACT, HOURS, IMAGES, SOCIAL } from '../constants/site.ts';
 import PageHero from '../components/PageHero.tsx';
 import EnquiryForm from '../components/EnquiryForm.tsx';
 import Button from '../components/Button.tsx';
+import { FORM_ENDPOINTS } from '../constants/forms.ts';
 
 const MAP_URL =
   'https://www.google.com/maps/search/?api=1&query=Soberton+Pumping+Station+A32+Wickham+Road+Southampton+SO32+2QF';
@@ -104,7 +105,12 @@ const ContactPage: React.FC = () => (
                 We offer a confidential service, including free valuations. Submit your details below and one of our specialists will get back to you.
               </p>
             </div>
-            <EnquiryForm showInterest idPrefix="contact" />
+            <EnquiryForm
+              endpoint={FORM_ENDPOINTS.contact}
+              formName="Contact enquiry"
+              showInterest
+              idPrefix="contact"
+            />
           </div>
         </div>
       </div>

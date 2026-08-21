@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CONTACT, HOURS, IMAGES, PLATFORMS, SOCIAL } from '../constants/site.ts';
 import AppLink from './AppLink.tsx';
+import NewsletterForm from './NewsletterForm.tsx';
 
 interface FooterLink {
   name: string;
@@ -92,21 +93,7 @@ const Footer: React.FC = () => {
             <p className="text-gray-500 text-[13px] font-light mb-6 max-w-xl leading-relaxed">
               Subscribe for auction alerts and our monthly newsletter — upcoming sales, valuation days and previews.
             </p>
-            <form className="relative group max-w-xl" onSubmit={(e) => e.preventDefault()}>
-              <label htmlFor="footer-email" className="sr-only">Email address</label>
-              <input
-                id="footer-email"
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent border-b border-gray-700 py-4 pr-28 text-sm focus:border-pumphouse-gold outline-none transition-all placeholder:text-gray-600 font-light"
-              />
-              <button
-                type="submit"
-                className="absolute right-0 bottom-4 text-[11px] uppercase tracking-[0.3em] font-bold text-pumphouse-gold hover:text-white transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
             <p className="mt-4 text-[10px] text-gray-600 uppercase tracking-widest leading-loose">
               By subscribing, you agree to our <Link to="/privacy-policy/" className="underline hover:text-pumphouse-gold transition-colors">Privacy Policy</Link>.
             </p>

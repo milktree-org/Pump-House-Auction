@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CONTACT, IMAGES } from '../constants/site.ts';
 import PageHero from '../components/PageHero.tsx';
 import EnquiryForm from '../components/EnquiryForm.tsx';
+import { FORM_ENDPOINTS } from '../constants/forms.ts';
 
 // Content mirrors pumphouseauctions.co.uk/free-valuation/
 const FreeValuationPage: React.FC = () => {
@@ -98,6 +99,8 @@ const FreeValuationPage: React.FC = () => {
 
             <div data-reveal className="lg:col-span-8 bg-white border border-pumphouse-taupe p-8 md:p-14">
               <EnquiryForm
+                endpoint={FORM_ENDPOINTS.valuation}
+                formName="Free valuation request"
                 showInterest
                 showUpload
                 submitLabel="Request Valuation"
